@@ -24,6 +24,7 @@
     "verbatimModuleSyntax": true,
 
     "noEmit": true,
+    "noImplicitOverride": true,
     "noUncheckedIndexedAccess": true
   }
 }
