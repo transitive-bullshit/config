@@ -18,7 +18,7 @@
     "./eslint": "./config/eslint.js",
     "./package.json": "./package.json",
     "./prettier": "./config/prettier.js",
-    "./reset.d.ts": "./config/reset.d.ts",
+    "./ts-reset": "./config/ts-reset.d.ts",
     "./tsconfig-node": "./config/tsconfig-node.json",
     "./typescript-react": "./config/tsconfig-react.json"
   },
