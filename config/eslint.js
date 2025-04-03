@@ -503,6 +503,8 @@ export const config = [
           '@typescript-eslint/no-namespace': 'off',
           '@typescript-eslint/array-type': 'off',
           '@typescript-eslint/consistent-indexed-object-style': 'off',
+          'no-undef': 'off',
+          'no-unused-vars': 'off',
           '@typescript-eslint/no-unused-vars': [
             'error',
             {
@@ -519,7 +521,8 @@ export const config = [
           ],
           'no-redeclare': 'off',
           'no-empty-function': 'off',
-          '@typescript-eslint/no-empty-function': 'off'
+          '@typescript-eslint/no-empty-function': 'off',
+          '@typescript-eslint/class-literal-property-style': 'off'
         }
       }
     : null,
