@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "React ESM Config",
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleDetection": "force",
+    "moduleResolution": "bundler",
+    "target": "es2022",
+    "outDir": "dist",
+
+    "lib": ["esnext", "dom", "dom.iterable"],
+
+    "allowImportingTsExtensions": false,
+    "allowJs": true,
+    "checkJs": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": false,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "useDefineForClassFields": true,
+    "verbatimModuleSyntax": true,
+
+    "noEmit": true,
+    "noUncheckedIndexedAccess": true
+  }
+}

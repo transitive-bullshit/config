@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json.schemastore.org/package",
+  "name": "@fisch0920/config",
+  "version": "0.0.0",
+  "description": "Shared config for my TypeScript projects.",
+  "repository": "transitive-bullshit/config",
+  "author": "Travis Fischer <travis@transitivebullsh.it>",
+  "license": "MIT",
+  "packageManager": "pnpm@10.7.0",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "config"
+  ],
+  "type": "module",
+  "exports": {
+    "./eslint": "./config/eslint.js",
+    "./package.json": "./package.json",
+    "./prettier": "./config/prettier.js",
+    "./reset.d.ts": "./config/reset.d.ts",
+    "./tsconfig-node": "./config/tsconfig-node.json",
+    "./typescript-react": "./config/tsconfig-react.json"
+  },
+  "scripts": {
+    "test": "run-p test:*",
+    "test:format": "prettier --check \"**/*.{js,ts,tsx}\"",
+    "test:lint": "eslint .",
+    "test:typecheck": "tsc",
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "simple-git-hooks"
+  },
+  "dependencies": {
+    "@eslint/js": "^9.22.0",
+    "@total-typescript/ts-reset": "^0.6.1",
+    "@vitest/eslint-plugin": "^1.1.37",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jest-dom": "^5.5.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-perfectionist": "^4.10.1",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-security": "^3.0.1",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-testing-library": "^7.1.1",
+    "eslint-plugin-unicorn": "^58.0.0",
+    "globals": "^16.0.0",
+    "typescript-eslint": "^8.26.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "eslint": "^9.23.0",
+    "np": "^10.2.0",
+    "npm-run-all2": "^7.0.2",
+    "prettier": "^3.5.3",
+    "react": "^19.1.0",
+    "simple-git-hooks": "^2.12.1",
+    "typescript": "^5.8.2"
+  },
+  "peerDependencies": {
+    "eslint": ">= 9",
+    "prettier": ">= 3",
+    "typescript": ">= 5"
+  },
+  "prettier": "./config/prettier.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpx lint-staged"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --ignore-unknown --write",
+      "eslint --fix"
+    ]
+  }
+}

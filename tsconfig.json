@@ -1,0 +1,5 @@
+{
+  "extends": "./config/tsconfig-node.json",
+  "include": ["**/*.ts"],
+  "compilerOptions": { "types": ["./config/reset.d.ts"] }
+}
