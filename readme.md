@@ -1,6 +1,6 @@
 # @fisch0920/config
 
-| Standardized TypeScript, ESLint, and Prettier configuration across my TypeScript projects.
+> Shared TypeScript, ESLint, and Prettier configs for my TS projects.
 
 <p align="center">
   <a href="https://github.com/transitive-bullshit/config/actions/workflows/main.yml"><img alt="Build Status" src="https://github.com/transitive-bullshit/config/actions/workflows/main.yml/badge.svg" /></a>
