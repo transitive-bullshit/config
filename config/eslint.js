@@ -7,9 +7,6 @@ import eslintPluginUnicorn from 'eslint-plugin-unicorn'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
 
-const ERROR = 'error'
-const OFF = 'off'
-
 /**
  * Checks if a package is installed.
  *
@@ -33,6 +30,9 @@ const hasVitest = has('vitest')
 const vitestFiles = ['**/__tests__/**/*', '**/*.test.*', '**/*.spec.*']
 const testFiles = ['**/tests/**', '**/#tests/**', ...vitestFiles]
 const playwrightFiles = ['**/e2e/**']
+const jsSourceFiles = ['**/*.js?(x)']
+const tsSourceFiles = ['**/*.ts?(x)']
+const sourceFiles = [tsSourceFiles, jsSourceFiles]
 
 /** @type {import("eslint").Linter.Config[]} */
 export const config = [
@@ -50,12 +50,30 @@ export const config = [
     ]
   },
 
-  eslint.configs.recommended,
+  {
+    files: sourceFiles,
+    ...eslint.configs.recommended
+  },
+
   ...tseslint.configs.recommended,
   ...tseslint.configs.stylistic,
 
+  // Security
+  {
+    files: sourceFiles,
+    ...eslintPluginSecurity.configs.recommended
+  },
+  {
+    files: sourceFiles,
+    rules: {
+      'security/detect-non-literal-fs-filename': 'off',
+      'security/detect-object-injection': 'off'
+    }
+  },
+
   // Global rules that apply to all files
   {
+    files: sourceFiles,
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -67,40 +85,40 @@ export const config = [
       }
     },
     rules: {
-      'array-callback-return': ERROR,
-      'getter-return': ERROR,
-      'new-parens': ERROR,
-      'no-array-constructor': ERROR,
-      'no-caller': ERROR,
-      'no-cond-assign': [ERROR, 'except-parens'],
-      'no-console': ERROR,
-      'no-const-assign': ERROR,
-      'no-constant-condition': [ERROR, { checkLoops: false }],
-      'no-control-regex': ERROR,
-      'no-debugger': ERROR,
-      'no-dupe-args': ERROR,
-      'no-dupe-class-members': ERROR,
-      'no-dupe-keys': ERROR,
-      'no-duplicate-case': ERROR,
-      'no-empty': [ERROR, { allowEmptyCatch: true }],
-      'no-empty-character-class': ERROR,
-      'no-empty-pattern': ERROR,
-      'no-eval': ERROR,
-      'no-ex-assign': ERROR,
-      'no-extend-native': ERROR,
-      'no-extra-bind': ERROR,
-      'no-extra-boolean-cast': ERROR,
-      'no-extra-label': ERROR,
-      'no-func-assign': ERROR,
-      'no-global-assign': ERROR,
-      'no-implied-eval': ERROR,
-      'no-invalid-regexp': ERROR,
-      'no-label-var': ERROR,
-      'no-labels': [ERROR, { allowLoop: true, allowSwitch: false }],
-      'no-lone-blocks': ERROR,
-      'no-loop-func': ERROR,
+      'array-callback-return': 'error',
+      'getter-return': 'error',
+      'new-parens': 'error',
+      'no-array-constructor': 'error',
+      'no-caller': 'error',
+      'no-cond-assign': ['error', 'except-parens'],
+      'no-console': 'off',
+      'no-const-assign': 'error',
+      'no-constant-condition': ['error', { checkLoops: false }],
+      'no-control-regex': 'error',
+      'no-debugger': 'error',
+      'no-dupe-args': 'error',
+      'no-dupe-class-members': 'error',
+      'no-dupe-keys': 'error',
+      'no-duplicate-case': 'error',
+      'no-empty': ['error', { allowEmptyCatch: true }],
+      'no-empty-character-class': 'error',
+      'no-empty-pattern': 'error',
+      'no-eval': 'error',
+      'no-ex-assign': 'error',
+      'no-extend-native': 'error',
+      'no-extra-bind': 'error',
+      'no-extra-boolean-cast': 'error',
+      'no-extra-label': 'error',
+      'no-func-assign': 'error',
+      'no-global-assign': 'error',
+      'no-implied-eval': 'error',
+      'no-invalid-regexp': 'error',
+      'no-label-var': 'error',
+      'no-labels': ['error', { allowLoop: true, allowSwitch: false }],
+      'no-lone-blocks': 'error',
+      'no-loop-func': 'error',
       'no-mixed-operators': [
-        ERROR,
+        'error',
         {
           groups: [
             ['&', '|', '^', '~', '<<', '>>', '>>>'],
@@ -111,102 +129,107 @@ export const config = [
           allowSamePrecedence: false
         }
       ],
-      'no-new-func': ERROR,
-      'no-new-object': ERROR,
-      'no-new-wrappers': ERROR,
-      'no-octal': ERROR,
-      'no-process-env': ERROR,
-      'no-redeclare': ERROR,
-      'no-script-url': ERROR,
-      'no-self-assign': ERROR,
-      'no-self-compare': ERROR,
-      'no-sequences': ERROR,
-      'no-shadow-restricted-names': ERROR,
-      'no-sparse-arrays': ERROR,
-      'no-template-curly-in-string': ERROR,
-      'no-this-before-super': ERROR,
-      'no-throw-literal': ERROR,
-      'no-undef': ERROR,
-      'no-undef-init': ERROR,
-      'no-unexpected-multiline': ERROR,
-      'no-unreachable': ERROR,
-      'no-unsafe-negation': ERROR,
+      'no-new-func': 'error',
+      'no-new-object': 'error',
+      'no-new-wrappers': 'error',
+      'no-octal': 'error',
+      'no-process-env': 'error',
+      'no-redeclare': 'error',
+      'no-script-url': 'error',
+      'no-self-assign': 'error',
+      'no-self-compare': 'error',
+      'no-sequences': 'error',
+      'no-shadow-restricted-names': 'error',
+      'no-sparse-arrays': 'error',
+      'no-template-curly-in-string': 'error',
+      'no-this-before-super': 'error',
+      'no-throw-literal': 'error',
+      'no-undef': 'error',
+      'no-undef-init': 'error',
+      'no-unexpected-multiline': 'error',
+      'no-unreachable': 'error',
+      'no-unsafe-negation': 'error',
       'no-unused-expressions': [
-        ERROR,
+        'error',
         {
           allowShortCircuit: true,
           allowTernary: true,
           allowTaggedTemplates: true
         }
       ],
-      'no-unused-labels': ERROR,
+      'no-unused-labels': 'error',
       'no-use-before-define': [
-        ERROR,
+        'error',
         { classes: false, functions: false, variables: false }
       ],
-      'no-useless-computed-key': ERROR,
-      'no-useless-concat': ERROR,
+      'no-useless-computed-key': 'error',
+      'no-useless-concat': 'error',
       'no-useless-rename': [
-        ERROR,
+        'error',
         {
           ignoreDestructuring: false,
           ignoreImport: false,
           ignoreExport: false
         }
       ],
-      'no-var': ERROR,
+      'no-var': 'error',
       'no-warning-comments': [
-        ERROR,
+        'error',
         { terms: ['FIXME'], location: 'anywhere' }
       ],
-      'object-shorthand': ERROR,
-      'prefer-const': ERROR,
-      'prefer-object-spread': ERROR,
-      'require-yield': ERROR,
-      'unicode-bom': [ERROR, 'never'],
-      'use-isnan': ERROR,
-      'valid-typeof': ERROR,
-      curly: [ERROR, 'multi-line'],
-      eqeqeq: [ERROR, 'always', { null: 'ignore' }],
+      'object-shorthand': 'error',
+      'prefer-const': 'error',
+      'prefer-object-spread': 'error',
+      'require-yield': 'error',
+      'unicode-bom': ['error', 'never'],
+      'use-isnan': 'error',
+      'valid-typeof': 'error',
+      curly: ['error', 'multi-line'],
+      eqeqeq: ['error', 'always', { null: 'ignore' }],
 
-      'dot-notation': ERROR,
+      'dot-notation': 'error',
       'no-unused-vars': [
-        ERROR,
+        'error',
         {
           args: 'none',
           ignoreRestSiblings: true
         }
       ],
-      'no-useless-escape': ERROR,
-      'no-return-await': ERROR
+      'no-useless-escape': 'error',
+      'no-return-await': 'error'
     }
   },
 
   // Import rules
   // https://github.com/import-js/eslint-plugin-import
-  eslintPluginImport.flatConfigs.recommended,
+  {
+    files: sourceFiles,
+    ...eslintPluginImport.flatConfigs.recommended
+  },
   hasTypeScript
     ? {
-        files: ['**/*.tsx', '**/*.jsx'],
+        files: tsSourceFiles,
         ...eslintPluginImport.flatConfigs.typescript
       }
     : null,
   {
+    files: sourceFiles,
     plugins: {
       // https://github.com/lydell/eslint-plugin-simple-import-sort
       'simple-import-sort': eslintPluginSimpleImportSort
     },
     rules: {
-      'import/first': ERROR,
-      'import/newline-after-import': ERROR,
-      'import/no-anonymous-default-export': OFF,
-      'import/no-duplicates': [ERROR, { 'prefer-inline': true }],
-      'import/no-relative-packages': ERROR,
-      'import/no-unresolved': OFF,
-      'import/order': OFF,
-      'no-duplicate-imports': ERROR,
+      'import/export': 'off',
+      'import/first': 'error',
+      'import/newline-after-import': 'error',
+      'import/no-anonymous-default-export': 'off',
+      'import/no-duplicates': ['error', { 'prefer-inline': true }],
+      'import/no-relative-packages': 'error',
+      'import/no-unresolved': 'off',
+      'import/order': 'off',
+      'no-duplicate-imports': 'error',
       'simple-import-sort/imports': [
-        ERROR,
+        'error',
         {
           // The default grouping, but with type imports first in each group.
           groups: [
@@ -218,37 +241,41 @@ export const config = [
           ]
         }
       ],
-      'simple-import-sort/exports': ERROR
+      'simple-import-sort/exports': 'error'
     }
   },
 
   // https://github.com/sindresorhus/eslint-plugin-unicorn
-  eslintPluginUnicorn.configs.recommended,
   {
+    files: sourceFiles,
+    ...eslintPluginUnicorn.configs.recommended
+  },
+  {
+    files: sourceFiles,
     rules: {
       'unicorn/catch-error-name': [
-        ERROR,
+        'error',
         {
           name: 'err'
         }
       ],
-      'unicorn/prevent-abbreviations': OFF,
-      'unicorn/switch-case-braces': [ERROR, 'avoid'],
-      'unicorn/no-zero-fractions': OFF,
-      'unicorn/no-await-expression-member': OFF,
-      'unicorn/no-negated-condition': OFF,
-      'unicorn/prefer-spread': OFF,
-      'unicorn/prefer-switch': OFF,
-      'unicorn/no-lonely-if': OFF,
-      'unicorn/explicit-length-check': OFF,
-      'unicorn/no-null': OFF,
-      'unicorn/no-useless-undefined': OFF,
-      'unicorn/no-nested-ternary': OFF,
-      'unicorn/prefer-query-selector': OFF,
-      'unicorn/no-array-callback-reference': OFF,
-      'unicorn/prefer-ternary': OFF,
-      'unicorn/no-array-push-push': OFF,
-      'unicorn/prefer-string-raw': OFF
+      'unicorn/prevent-abbreviations': 'off',
+      'unicorn/switch-case-braces': ['error', 'avoid'],
+      'unicorn/no-zero-fractions': 'off',
+      'unicorn/no-await-expression-member': 'off',
+      'unicorn/no-negated-condition': 'off',
+      'unicorn/prefer-spread': 'off',
+      'unicorn/prefer-switch': 'off',
+      'unicorn/no-lonely-if': 'off',
+      'unicorn/explicit-length-check': 'off',
+      'unicorn/no-null': 'off',
+      'unicorn/no-useless-undefined': 'off',
+      'unicorn/no-nested-ternary': 'off',
+      'unicorn/prefer-query-selector': 'off',
+      'unicorn/no-array-callback-reference': 'off',
+      'unicorn/prefer-ternary': 'off',
+      'unicorn/no-array-push-push': 'off',
+      'unicorn/prefer-string-raw': 'off'
     }
   },
 
@@ -281,55 +308,58 @@ export const config = [
         },
         rules: {
           'react/forbid-foreign-prop-types': [
-            ERROR,
+            'error',
             { allowInPropTypes: true }
           ],
           'react/function-component-definition': [
-            ERROR,
+            'error',
             {
               namedComponents: 'function-declaration',
               unnamedComponents: 'arrow-function'
             }
           ],
-          'react/jsx-key': ERROR,
-          'react/jsx-no-comment-textnodes': ERROR,
-          'react/jsx-no-target-blank': ERROR,
-          'react/jsx-no-undef': ERROR,
-          'react/jsx-pascal-case': [ERROR, { allowAllCaps: true, ignore: [] }],
-          'react/jsx-uses-react': ERROR,
-          'react/jsx-uses-vars': ERROR,
-          'react/no-danger-with-children': ERROR,
-          'react/no-direct-mutation-state': ERROR,
-          'react/no-find-dom-node': ERROR,
-          'react/no-is-mounted': ERROR,
-          'react/no-render-return-value': ERROR,
-          'react/no-string-refs': ERROR,
-          'react/no-typos': ERROR,
-          'react/react-in-jsx-scope': OFF,
-          'react/require-render-return': ERROR,
-          'react/style-prop-object': ERROR,
+          'react/jsx-key': 'error',
+          'react/jsx-no-comment-textnodes': 'error',
+          'react/jsx-no-target-blank': 'error',
+          'react/jsx-no-undef': 'error',
+          'react/jsx-pascal-case': [
+            'error',
+            { allowAllCaps: true, ignore: [] }
+          ],
+          'react/jsx-uses-react': 'error',
+          'react/jsx-uses-vars': 'error',
+          'react/no-danger-with-children': 'error',
+          'react/no-direct-mutation-state': 'error',
+          'react/no-find-dom-node': 'error',
+          'react/no-is-mounted': 'error',
+          'react/no-render-return-value': 'error',
+          'react/no-string-refs': 'error',
+          'react/no-typos': 'error',
+          'react/react-in-jsx-scope': 'off',
+          'react/require-render-return': 'error',
+          'react/style-prop-object': 'error',
 
           ...(await import('eslint-plugin-jsx-a11y')).default.configs
-            .recommended,
-          'jsx-a11y/alt-text': OFF,
-          'jsx-a11y/anchor-has-content': OFF,
+            .recommended.rules,
+          'jsx-a11y/alt-text': 'off',
+          'jsx-a11y/anchor-has-content': 'off',
           'jsx-a11y/anchor-is-valid': [
-            ERROR,
+            'error',
             { aspects: ['noHref', 'invalidHref'] }
           ],
-          'jsx-a11y/aria-activedescendant-has-tabindex': ERROR,
-          'jsx-a11y/aria-props': ERROR,
-          'jsx-a11y/aria-proptypes': ERROR,
-          'jsx-a11y/aria-role': [ERROR, { ignoreNonDOM: true }],
-          'jsx-a11y/aria-unsupported-elements': ERROR,
-          'jsx-a11y/iframe-has-title': ERROR,
-          'jsx-a11y/img-redundant-alt': ERROR,
-          'jsx-a11y/lang': ERROR,
-          'jsx-a11y/no-access-key': ERROR,
-          'jsx-a11y/no-autofocus': OFF,
-          'jsx-a11y/no-redundant-roles': ERROR,
-          'jsx-a11y/role-has-required-aria-props': ERROR,
-          'jsx-a11y/role-supports-aria-props': ERROR
+          'jsx-a11y/aria-activedescendant-has-tabindex': 'error',
+          'jsx-a11y/aria-props': 'error',
+          'jsx-a11y/aria-proptypes': 'error',
+          'jsx-a11y/aria-role': ['error', { ignoreNonDOM: true }],
+          'jsx-a11y/aria-unsupported-elements': 'error',
+          'jsx-a11y/iframe-has-title': 'error',
+          'jsx-a11y/img-redundant-alt': 'error',
+          'jsx-a11y/lang': 'error',
+          'jsx-a11y/no-access-key': 'error',
+          'jsx-a11y/no-autofocus': 'off',
+          'jsx-a11y/no-redundant-roles': 'error',
+          'jsx-a11y/role-has-required-aria-props': 'error',
+          'jsx-a11y/role-supports-aria-props': 'error'
         }
       }
     : null,
@@ -337,17 +367,17 @@ export const config = [
   // Rules specific to React hooks
   hasReact
     ? {
+        files: sourceFiles,
         ...(await import('eslint-plugin-react-hooks')).configs[
           'recommended-latest'
-        ],
-        files: ['**/*.ts?(x)', '**/*.js?(x)']
+        ]
       }
     : null,
 
   // TS and TSX files
   hasTypeScript
     ? {
-        files: ['**/*.ts?(x)'],
+        files: tsSourceFiles,
         plugins: {
           // https://typescript-eslint.io
           '@typescript-eslint': tseslint.plugin
@@ -360,7 +390,7 @@ export const config = [
         },
         rules: {
           '@typescript-eslint/consistent-type-imports': [
-            ERROR,
+            'error',
             {
               prefer: 'type-imports',
               disallowTypeAnnotations: true,
@@ -368,7 +398,7 @@ export const config = [
             }
           ],
           '@typescript-eslint/naming-convention': [
-            ERROR,
+            'error',
             {
               selector: 'typeLike',
               format: ['PascalCase'],
@@ -429,20 +459,20 @@ export const config = [
             { selector: 'property', format: null }
           ],
           '@typescript-eslint/no-floating-promises': [
-            ERROR,
+            'error',
             { ignoreIIFE: true }
           ],
           '@typescript-eslint/no-misused-promises': [
-            ERROR,
+            'error',
             { checksVoidReturn: false }
           ],
           '@typescript-eslint/no-unused-expressions': [
-            ERROR,
+            'error',
             { allowTernary: true }
           ],
-          '@typescript-eslint/unified-signatures': ERROR,
+          '@typescript-eslint/unified-signatures': 'error',
           '@typescript-eslint/ban-ts-comment': [
-            ERROR,
+            'error',
             {
               'ts-expect-error': 'allow-with-description',
               'ts-ignore': true,
@@ -452,8 +482,9 @@ export const config = [
               minimumDescriptionLength: 10
             }
           ],
+          'no-use-before-define': 'off',
           '@typescript-eslint/no-use-before-define': [
-            ERROR,
+            'error',
             {
               classes: false,
               functions: false,
@@ -465,13 +496,15 @@ export const config = [
           ],
 
           // Disable rules from presets
-          // 'import/consistent-type-specifier-style': [ERROR, 'prefer-inline'],
-          'import/consistent-type-specifier-style': OFF,
-          '@typescript-eslint/consistent-type-definitions': OFF,
-          '@typescript-eslint/no-namespace': OFF,
-          '@typescript-eslint/array-type': OFF,
+          // 'import/consistent-type-specifier-style': ['error', 'prefer-inline'],
+          '@typescript-eslint/no-explicit-any': 'off',
+          'import/consistent-type-specifier-style': 'off',
+          '@typescript-eslint/consistent-type-definitions': 'off',
+          '@typescript-eslint/no-namespace': 'off',
+          '@typescript-eslint/array-type': 'off',
+          '@typescript-eslint/consistent-indexed-object-style': 'off',
           '@typescript-eslint/no-unused-vars': [
-            ERROR,
+            'error',
             {
               // Ignore: (solely underscores | starting with exactly one underscore)
               argsIgnorePattern: '^(_+$|_[^_])',
@@ -479,11 +512,14 @@ export const config = [
             }
           ],
           '@typescript-eslint/no-inferrable-types': [
-            ERROR,
+            'error',
             {
               ignoreProperties: true
             }
-          ]
+          ],
+          'no-redeclare': 'off',
+          'no-empty-function': 'off',
+          '@typescript-eslint/no-empty-function': 'off'
         }
       }
     : null,
@@ -492,11 +528,11 @@ export const config = [
   // *.test.* or *.spec.* in the filename. If a file doesn't match this assumption,
   // then it will not be allowed to import test files.
   {
-    files: ['**/*.ts?(x)', '**/*.js?(x)'],
+    files: sourceFiles,
     ignores: testFiles,
     rules: {
       'no-restricted-imports': [
-        ERROR,
+        'error',
         {
           patterns: [
             {
@@ -513,8 +549,8 @@ export const config = [
     files: testFiles,
     rules: {
       // Disable `any` rules for tests
-      '@typescript-eslint/no-explicit-any': OFF,
-      '@typescript-eslint/ban-ts-comment': OFF
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/ban-ts-comment': 'off'
     }
   },
 
@@ -527,9 +563,9 @@ export const config = [
             .default
         },
         rules: {
-          'testing-library/no-unnecessary-act': [ERROR, { isStrict: false }],
-          'testing-library/no-wait-for-side-effects': ERROR,
-          'testing-library/prefer-find-by': ERROR
+          'testing-library/no-unnecessary-act': ['error', { isStrict: false }],
+          'testing-library/no-wait-for-side-effects': 'error',
+          'testing-library/prefer-find-by': 'error'
         }
       }
     : null,
@@ -542,10 +578,10 @@ export const config = [
           'jest-dom': (await import('eslint-plugin-jest-dom')).default
         },
         rules: {
-          'jest-dom/prefer-checked': ERROR,
-          'jest-dom/prefer-enabled-disabled': ERROR,
-          'jest-dom/prefer-focus': ERROR,
-          'jest-dom/prefer-required': ERROR
+          'jest-dom/prefer-checked': 'error',
+          'jest-dom/prefer-enabled-disabled': 'error',
+          'jest-dom/prefer-focus': 'error',
+          'jest-dom/prefer-required': 'error'
         }
       }
     : null,
@@ -558,19 +594,10 @@ export const config = [
           vitest: (await import('@vitest/eslint-plugin')).default
         },
         rules: {
-          'vitest/no-focused-tests': [ERROR, { fixable: false }]
+          'vitest/no-focused-tests': ['error', { fixable: false }]
         }
       }
     : null,
-
-  // Security
-  eslintPluginSecurity.configs.recommended,
-  {
-    rules: {
-      'security/detect-non-literal-fs-filename': OFF,
-      'security/detect-object-injection': OFF
-    }
-  },
 
   // Run prettier at the end
   eslintConfigPrettier
