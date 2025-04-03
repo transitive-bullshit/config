@@ -25,7 +25,7 @@ Add the following line to your `package.json`:
 
 ### 3. Configure ESLint
 
-Create a `eslint.config.ts` file in the root of the project:
+Create a `eslint.config.js` file in the root of the project:
 
 ```js
 import { config } from '@fisch0920/config/eslint'
@@ -41,10 +41,7 @@ Create a `tsconfig.json` file in the root that extends `@fisch0920/config/tsconf
 {
   "extends": "@fisch0920/config/tsconfig-node",
   "include": ["src"],
-  "exclude": ["**/node_modules"],
-  "compilerOptions": {
-    // Add or override compiler options here
-  }
+  "exclude": ["node_modules"]
 }
 ```
 
