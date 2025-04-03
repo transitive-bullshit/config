@@ -2,7 +2,7 @@
 
 > Shared TypeScript, ESLint, and Prettier configs for my TS projects.
 
-<p align="center">
+<p>
   <a href="https://github.com/transitive-bullshit/config/actions/workflows/main.yml"><img alt="Build Status" src="https://github.com/transitive-bullshit/config/actions/workflows/main.yml/badge.svg" /></a>
   <a href="https://www.npmjs.com/package/@fisch0920/config"><img alt="NPM" src="https://img.shields.io/npm/v/@fisch0920/config.svg" /></a>
   <a href="https://github.com/transitive-bullshit/config/blob/main/license"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-blue" /></a>
