@@ -49,6 +49,11 @@ Create a `tsconfig.json` file in the root that extends `@fisch0920/config/tsconf
 
 This is just a convenient export of [`@total-typescript/ts-reset`](https://www.totaltypescript.com/ts-reset).
 
+```ts
+// reset.d.ts
+import '@fisch0920/config/ts-reset'
+```
+
 ## License
 
 MIT © [Travis Fischer](https://x.com/transitive_bs)
