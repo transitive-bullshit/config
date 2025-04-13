@@ -20,7 +20,7 @@
     "./prettier": "./config/prettier.js",
     "./ts-reset": "./config/ts-reset.d.ts",
     "./tsconfig-node": "./config/tsconfig-node.json",
-    "./typescript-react": "./config/tsconfig-react.json"
+    "./tsconfig-react": "./config/tsconfig-react.json"
   },
   "scripts": {
     "test": "run-p test:*",
