@@ -399,7 +399,7 @@ export const config = [
             {
               prefer: 'type-imports',
               disallowTypeAnnotations: true,
-              fixStyle: 'inline-type-imports'
+              fixStyle: 'separate-type-imports'
             }
           ],
           '@typescript-eslint/naming-convention': [
