@@ -386,11 +386,7 @@ export const config = [
         languageOptions: {
           parser: tseslint.parser,
           parserOptions: {
-            // projectService: true
-            projectService: {
-              // Allow top-level TS config files
-              allowDefaultProject: ['*.config.ts']
-            }
+            projectService: true
           }
         },
         rules: {
