@@ -6,7 +6,7 @@
   "repository": "transitive-bullshit/config",
   "author": "Travis Fischer <travis@transitivebullsh.it>",
   "license": "MIT",
-  "packageManager": "pnpm@10.9.0",
+  "packageManager": "pnpm@10.11.1",
   "engines": {
     "node": ">=18"
   },
@@ -31,9 +31,9 @@
     "prepare": "simple-git-hooks"
   },
   "dependencies": {
-    "@eslint/js": "^9.26.0",
+    "@eslint/js": "^9.28.0",
     "@total-typescript/ts-reset": "^0.6.1",
-    "@vitest/eslint-plugin": "^1.1.44",
+    "@vitest/eslint-plugin": "^1.2.1",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jest-dom": "^5.5.0",
@@ -42,16 +42,16 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-security": "^3.0.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
-    "eslint-plugin-testing-library": "^7.2.0",
+    "eslint-plugin-testing-library": "^7.4.0",
     "eslint-plugin-unicorn": "^59.0.1",
-    "globals": "^16.1.0",
-    "typescript-eslint": "^8.32.1"
+    "globals": "^16.2.0",
+    "typescript-eslint": "^8.33.1"
   },
   "devDependencies": {
-    "@types/react": "^19.1.4",
-    "eslint": "^9.26.0",
+    "@types/react": "^19.1.6",
+    "eslint": "^9.28.0",
     "np": "^10.2.0",
-    "npm-run-all2": "^8.0.1",
+    "npm-run-all2": "^8.0.4",
     "prettier": "^3.5.3",
     "react": "^19.1.0",
     "simple-git-hooks": "^2.13.0",
@@ -62,10 +62,10 @@
     "prettier": ">= 3",
     "typescript": ">= 5"
   },
-  "prettier": "./config/prettier.js",
   "publishConfig": {
     "access": "public"
   },
+  "prettier": "./config/prettier.js",
   "simple-git-hooks": {
     "pre-commit": "pnpx lint-staged"
   },
