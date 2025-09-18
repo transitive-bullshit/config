@@ -524,7 +524,8 @@ export const config = [
           'no-redeclare': 'off',
           'no-empty-function': 'off',
           '@typescript-eslint/no-empty-function': 'off',
-          '@typescript-eslint/class-literal-property-style': 'off'
+          '@typescript-eslint/class-literal-property-style': 'off',
+          '@typescript-eslint/triple-slash-reference': 'off'
         }
       }
     : null,
