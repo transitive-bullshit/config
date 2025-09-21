@@ -27,6 +27,7 @@ const hasReact = has('react')
 const hasTestingLibrary = has('@testing-library/dom')
 const hasJestDom = has('@testing-library/jest-dom')
 const hasVitest = has('vitest')
+const hasZod = has('zod')
 const vitestFiles = ['**/__tests__/**/*', '**/*.test.*', '**/*.spec.*']
 const testFiles = ['**/tests/**', '**/#tests/**', ...vitestFiles]
 const playwrightFiles = ['**/e2e/**']
@@ -602,6 +603,14 @@ export const config = [
         rules: {
           'vitest/no-focused-tests': ['error', { fixable: false }]
         }
+      }
+    : null,
+
+  // Rules specific to Zod
+  hasZod
+    ? {
+        files: sourceFiles,
+        ...(await import('eslint-plugin-zod-x')).configs.recommended
       }
     : null,
 
