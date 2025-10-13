@@ -279,19 +279,7 @@ export const config = [
       'unicorn/prefer-string-raw': 'off',
       'unicorn/prefer-type-error': 'off',
       'unicorn/prefer-single-call': 'off',
-      'unicorn/import-style': [
-        'error',
-        {
-          styles: {
-            util: {
-              named: true
-            },
-            path: {
-              named: true
-            }
-          }
-        }
-      ]
+      'unicorn/import-style': 'off'
     }
   },
 
