@@ -383,10 +383,9 @@ export const config = [
   // Rules specific to React hooks
   hasReact
     ? {
-        files: sourceFiles,
-        ...(await import('eslint-plugin-react-hooks')).configs[
-          'recommended-latest'
-        ]
+        ...(await import('eslint-plugin-react-hooks')).default.configs.flat
+          .recommended,
+        files: sourceFiles
       }
     : null,
 
