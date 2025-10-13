@@ -278,7 +278,20 @@ export const config = [
       'unicorn/no-array-push-push': 'off',
       'unicorn/prefer-string-raw': 'off',
       'unicorn/prefer-type-error': 'off',
-      'unicorn/prefer-single-call': 'off'
+      'unicorn/prefer-single-call': 'off',
+      'unicorn/import-style': [
+        'error',
+        {
+          styles: {
+            util: {
+              named: true
+            },
+            path: {
+              named: true
+            }
+          }
+        }
+      ]
     }
   },
 
