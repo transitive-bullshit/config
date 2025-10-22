@@ -279,7 +279,8 @@ export const config = [
       'unicorn/prefer-string-raw': 'off',
       'unicorn/prefer-type-error': 'off',
       'unicorn/prefer-single-call': 'off',
-      'unicorn/import-style': 'off'
+      'unicorn/import-style': 'off',
+      'unicorn/no-array-reduce': 'off'
     }
   },
 
