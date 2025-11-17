@@ -344,9 +344,6 @@ export const config = [
           'react/require-render-return': 'error',
           'react/style-prop-object': 'error',
 
-          // TODO: this one seems kinda annoying, so disabling it for now
-          'react-hooks/set-state-in-effect': 'off',
-
           ...(await import('eslint-plugin-jsx-a11y')).default.configs
             .recommended.rules,
           'jsx-a11y/alt-text': 'off',
@@ -377,7 +374,12 @@ export const config = [
     ? {
         ...(await import('eslint-plugin-react-hooks')).default.configs.flat
           .recommended,
-        files: sourceFiles
+        files: sourceFiles,
+
+        rules: {
+          // TODO: this one seems kinda annoying, so disabling it for now
+          'react-hooks/set-state-in-effect': 'off'
+        }
       }
     : null,
 
