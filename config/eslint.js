@@ -616,7 +616,7 @@ export const config = [
   hasZod
     ? {
         files: sourceFiles,
-        ...(await import('eslint-plugin-zod-x')).default.configs.recommended
+        ...(await import('eslint-plugin-zod')).default.configs.recommended
       }
     : null,
 
