@@ -36,6 +36,7 @@
     "@total-typescript/ts-reset": "^0.6.1"
   },
   "devDependencies": {
+    "lint-staged": "^17.3.0",
     "np": "^12.0.1",
     "npm-run-all2": "^9.0.3",
     "oxfmt": "^0.63.0",

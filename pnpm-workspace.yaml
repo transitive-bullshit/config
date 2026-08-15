@@ -2,5 +2,5 @@ enablePrePostScripts: true
 packageManagerStrict: false
 minimumReleaseAge: 1440
 
-onlyBuiltDependencies:
-  - simple-git-hooks
+allowBuilds:
+  simple-git-hooks: true
