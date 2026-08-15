@@ -2,12 +2,12 @@ import { defineConfig } from 'oxlint'
 
 export default defineConfig({
   $schema: './node_modules/oxlint/configuration_schema.json',
-  plugins: ['typescript', 'unicorn', 'react', 'vitest'],
+  plugins: ['typescript', 'unicorn', 'oxc', 'react', 'vitest'],
   env: {
     builtin: true
   },
   categories: {
-    correctness: 'warn'
+    correctness: 'error'
   },
   ignorePatterns: [
     '**/node_modules/**',
@@ -16,15 +16,21 @@ export default defineConfig({
     '**/.next/**',
     '**/.cache/**',
     '**/.vercel/**',
+    '**/.pnpm-store/**',
     '**/playwright-report/**',
     '**/server-build/**',
     '**/coverage/**'
   ],
   rules: {
+    // general rules
+    'array-callback-return': 'error',
     'no-array-constructor': 'error',
-    'no-unused-expressions': 'error',
-    'no-unused-vars': 'error',
     'no-empty-function': 'error',
+    'no-new-func': 'error',
+    'no-template-curly-in-string': 'error',
+    'import/export': 'error',
+
+    // typescript rules
     'typescript/ban-ts-comment': 'error',
     'typescript/no-duplicate-enum-values': 'error',
     'typescript/no-empty-object-type': 'error',
@@ -54,11 +60,41 @@ export default defineConfig({
     'typescript/no-inferrable-types': 'error',
     'typescript/prefer-for-of': 'error',
     'typescript/prefer-function-type': 'error',
-    'vitest/no-focused-tests': 'error'
+
+    // vitest rules
+    'vitest/no-focused-tests': 'error',
+
+    // unicorn rules
+    'unicorn/catch-error-name': [
+      'error',
+      {
+        name: 'err'
+      }
+    ],
+    'unicorn/switch-case-braces': ['error', 'avoid'],
+    'unicorn/no-zero-fractions': 'off',
+    'unicorn/no-await-expression-member': 'off',
+    'unicorn/no-negated-condition': 'off',
+    'unicorn/prefer-spread': 'off',
+    'unicorn/no-lonely-if': 'off',
+    'unicorn/explicit-length-check': 'off',
+    'unicorn/no-null': 'off',
+    'unicorn/no-useless-undefined': 'off',
+    'unicorn/no-nested-ternary': 'off',
+    'unicorn/prefer-query-selector': 'off',
+    'unicorn/no-array-callback-reference': 'off',
+    'unicorn/prefer-ternary': 'off',
+    'unicorn/prefer-string-raw': 'off',
+    'unicorn/prefer-type-error': 'off',
+    'unicorn/prefer-single-call': 'off',
+    'unicorn/import-style': 'off',
+    'unicorn/no-array-reduce': 'off'
   },
   overrides: [
     {
+      // source files
       files: ['**/*.ts?(x)', '**/*.js?(x)'],
+      plugins: ['react'],
       rules: {
         'no-restricted-imports': [
           'error',
@@ -67,7 +103,6 @@ export default defineConfig({
               {
                 group: [
                   '**/tests/**',
-                  '**/#tests/**',
                   '**/__tests__/**/*',
                   '**/*.test.*',
                   '**/*.spec.*'
@@ -80,14 +115,10 @@ export default defineConfig({
       }
     },
     {
-      files: [
-        '**/tests/**',
-        '**/#tests/**',
-        '**/__tests__/**/*',
-        '**/*.test.*',
-        '**/*.spec.*'
-      ],
+      // test files
+      files: ['**/tests/**', '**/__tests__/**/*', '**/*.test.*', '**/*.spec.*'],
       rules: {
+        // relax rules for test files
         'typescript/no-explicit-any': 'off',
         'typescript/ban-ts-comment': 'off'
       }

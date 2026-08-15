@@ -1,21 +1,21 @@
 # @fisch0920/config
 
-> Shared TypeScript, Oxlint, ESLint, and Prettier configs for my TS projects.
+> Shared TypeScript, Oxlint, and Oxfmt configs for my projects.
 
 <p>
-  <a href="https://github.com/transitive-bullshit/config/actions/workflows/main.yml"><img alt="Build Status" src="https://github.com/transitive-bullshit/config/actions/workflows/main.yml/badge.svg" /></a>
+  <a href="https://github.com/transitive-bullshit/config/actions/workflows/test.yml"><img alt="Build Status" src="https://github.com/transitive-bullshit/config/actions/workflows/test.yml/badge.svg" /></a>
   <a href="https://www.npmjs.com/package/@fisch0920/config"><img alt="NPM" src="https://img.shields.io/npm/v/@fisch0920/config.svg" /></a>
   <a href="https://github.com/transitive-bullshit/config/blob/main/license"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-blue" /></a>
-  <a href="https://prettier.io"><img alt="Prettier Code Formatting" src="https://img.shields.io/badge/code_style-prettier-brightgreen.svg" /></a>
+  <a href="https://oxc.rs"><img alt="Project uses oxfmt and oxlint" src="https://img.shields.io/badge/code_style-oxc-brightgreen.svg" /></a>
 </p>
 
 ## Usage
 
 ### 1. Add Dependency
 
-Install `@fisch0920/config` and the peer tools you use as dev dependencies. For the Oxlint preset, install `oxlint`.
+Install `@fisch0920/config` and the peer tools you use as dev dependencies (`oxfmt`, `oxlint`, `typescript`).
 
-### 2. Configure Oxfmt
+### 2. Configure Oxfmt for code formatting
 
 Create an `oxfmt.config.ts` file in the root of the project:
 
@@ -23,7 +23,7 @@ Create an `oxfmt.config.ts` file in the root of the project:
 export default from '@fisch0920/config/oxfmt'
 ```
 
-### 3. Configure Oxlint
+### 3. Configure Oxlint for code linting
 
 Create an `oxlint.config.ts` file in the root of the project:
 
@@ -38,7 +38,7 @@ Create a `tsconfig.json` file in the root that extends `@fisch0920/config/tsconf
 ```jsonc
 {
   "extends": "@fisch0920/config/tsconfig-node",
-  "include": ["src"],
+  "include": ["*.config.ts", "src"],
   "exclude": ["node_modules"]
 }
 ```
