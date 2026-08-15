@@ -20,7 +20,7 @@ Install `@fisch0920/config` and the peer tools you use as dev dependencies (`oxf
 Create an `oxfmt.config.ts` file in the root of the project:
 
 ```ts
-export default from '@fisch0920/config/oxfmt'
+export { default } from '@fisch0920/config/oxfmt'
 ```
 
 ### 3. Configure Oxlint for code linting
@@ -28,7 +28,7 @@ export default from '@fisch0920/config/oxfmt'
 Create an `oxlint.config.ts` file in the root of the project:
 
 ```ts
-export default from '@fisch0920/config/oxlint'
+export { default } from '@fisch0920/config/oxlint'
 ```
 
 ### 4. Configure TypeScript
