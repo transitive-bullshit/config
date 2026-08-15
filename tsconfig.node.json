@@ -1,8 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Node ESM Config",
+  "display": "Node.js TS Config",
   "compilerOptions": {
-    "lib": ["esnext", "dom.iterable"],
+    "lib": ["ESNext", "DOM.Iterable"],
     "module": "esnext",
     "moduleDetection": "force",
     "moduleResolution": "bundler",

@@ -1,6 +1,6 @@
 # @fisch0920/config
 
-> Shared TypeScript, ESLint, and Prettier configs for my TS projects.
+> Shared TypeScript, Oxlint, ESLint, and Prettier configs for my TS projects.
 
 <p>
   <a href="https://github.com/transitive-bullshit/config/actions/workflows/main.yml"><img alt="Build Status" src="https://github.com/transitive-bullshit/config/actions/workflows/main.yml/badge.svg" /></a>
@@ -13,24 +13,22 @@
 
 ### 1. Add Dependency
 
-Install `@fisch0920/config` as a dev dependency.
+Install `@fisch0920/config` and the peer tools you use as dev dependencies. For the Oxlint preset, install `oxlint`.
 
-### 2. Configure Prettier
+### 2. Configure Oxfmt
 
-Add the following line to your `package.json`:
+Create an `oxfmt.config.ts` file in the root of the project:
 
-```json
-  "prettier": "@fisch0920/config/prettier",
+```ts
+export default from '@fisch0920/config/oxfmt'
 ```
 
-### 3. Configure ESLint
+### 3. Configure Oxlint
 
-Create a `eslint.config.js` file in the root of the project:
+Create an `oxlint.config.ts` file in the root of the project:
 
-```js
-import { config } from '@fisch0920/config/eslint'
-
-export default [...config]
+```ts
+export default from '@fisch0920/config/oxlint'
 ```
 
 ### 4. Configure TypeScript

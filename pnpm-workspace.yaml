@@ -4,3 +4,6 @@ minimumReleaseAge: 1440
 
 ignoredBuiltDependencies:
   - simple-git-hooks
+
+allowBuilds:
+  simple-git-hooks: set this to true or false
