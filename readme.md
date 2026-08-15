@@ -3,10 +3,10 @@
 > Shared TypeScript, Oxlint, and Oxfmt configs for my projects.
 
 <p>
-  <a href="https://github.com/transitive-bullshit/config/actions/workflows/test.yml"><img alt="Build Status" src="https://github.com/transitive-bullshit/config/actions/workflows/test.yml/badge.svg" /></a>
   <a href="https://www.npmjs.com/package/@fisch0920/config"><img alt="NPM" src="https://img.shields.io/npm/v/@fisch0920/config.svg" /></a>
   <a href="https://github.com/transitive-bullshit/config/blob/main/license"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-blue" /></a>
   <a href="https://oxc.rs"><img alt="Project uses oxfmt and oxlint" src="https://img.shields.io/badge/code_style-oxc-brightgreen.svg" /></a>
+  <a href="https://github.com/transitive-bullshit/config/actions/workflows/test.yml"><img alt="Build Status" src="https://github.com/transitive-bullshit/config/actions/workflows/test.yml/badge.svg" /></a>
 </p>
 
 ## Usage
