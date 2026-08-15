@@ -52,7 +52,7 @@
     "oxfmt": ">= 0.63.0",
     "oxlint": ">= 1.78",
     "oxlint-tsgolint": ">= 7.0.2001",
-    "typescript": ">= 6"
+    "typescript": ">= 7"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
