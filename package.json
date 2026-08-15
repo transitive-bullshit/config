@@ -1,70 +1,65 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "@fisch0920/config",
-  "version": "1.4.0",
-  "description": "Shared TypeScript, ESLint, and Prettier configs for my TS projects.",
-  "repository": "transitive-bullshit/config",
-  "author": "Travis Fischer <travis@transitivebullsh.it>",
+  "version": "1.4.1",
+  "description": "Shared TypeScript, Oxlint, and Oxfmt configs for my projects.",
   "license": "MIT",
-  "packageManager": "pnpm@10.28.2",
-  "engines": {
-    "node": ">=18"
-  },
+  "author": "Travis Fischer <travis@transitivebullsh.it>",
+  "repository": "transitive-bullshit/config",
   "files": [
-    "config"
+    "*.ts",
+    "*.json"
   ],
   "type": "module",
   "exports": {
-    "./eslint": "./config/eslint.js",
-    "./package.json": "./package.json",
-    "./prettier": "./config/prettier.js",
-    "./ts-reset": "./config/ts-reset.d.ts",
-    "./tsconfig-node": "./config/tsconfig-node.json",
-    "./tsconfig-react": "./config/tsconfig-react.json"
-  },
-  "scripts": {
-    "test": "run-p test:*",
-    "test:format": "prettier --check \"**/*.{js,ts,tsx}\"",
-    "test:lint": "eslint .",
-    "test:typecheck": "tsc",
-    "prerelease": "run-s test",
-    "release": "np --yolo"
-  },
-  "dependencies": {
-    "@eslint/js": "^9.39.2",
-    "@total-typescript/ts-reset": "^0.6.1",
-    "@vitest/eslint-plugin": "^1.6.18",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-jest-dom": "^5.5.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-security": "^4.0.0",
-    "eslint-plugin-simple-import-sort": "^13.0.0",
-    "eslint-plugin-testing-library": "^7.15.4",
-    "eslint-plugin-unicorn": "^64.0.0",
-    "eslint-plugin-zod": "^4.5.3",
-    "globals": "^17.6.0",
-    "typescript-eslint": "^8.60.0"
-  },
-  "devDependencies": {
-    "@types/react": "^19.2.15",
-    "eslint": "^9.39.2",
-    "np": "^11.2.1",
-    "npm-run-all2": "^9.0.1",
-    "prettier": "^3.8.3",
-    "react": "^19.2.6",
-    "typescript": "^6.0.3",
-    "zod": "^4.4.3"
-  },
-  "peerDependencies": {
-    "eslint": ">= 9",
-    "prettier": ">= 3",
-    "typescript": ">= 5"
+    "./oxfmt": "./oxfmt.config.ts",
+    "./oxlint": "./oxlint.config.ts",
+    "./tsconfig-node": "./tsconfig.node.json",
+    "./tsconfig-react": "./tsconfig.react.json",
+    "./ts-reset": "./ts-reset.d.ts",
+    "./package.json": "./package.json"
   },
   "publishConfig": {
     "access": "public"
   },
-  "prettier": "./config/prettier.js"
+  "scripts": {
+    "test": "run-p test:*",
+    "test:format": "oxfmt --check",
+    "test:lint": "oxlint",
+    "test:typecheck": "tsc",
+    "fix:format": "oxfmt",
+    "fix:lint": "oxlint --fix",
+    "prerelease": "run-s test",
+    "release": "np --yolo"
+  },
+  "dependencies": {
+    "@total-typescript/ts-reset": "^0.6.1"
+  },
+  "devDependencies": {
+    "lint-staged": "^17.3.0",
+    "np": "^12.0.1",
+    "npm-run-all2": "^9.0.3",
+    "oxfmt": "^0.63.0",
+    "oxlint": "^1.78.0",
+    "simple-git-hooks": "^2.13.1",
+    "typescript": "^7.0.2"
+  },
+  "peerDependencies": {
+    "oxfmt": ">= 0.63.0",
+    "oxlint": ">= 1.78",
+    "typescript": ">= 6"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "oxfmt",
+      "oxlint --fix"
+    ]
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@11.5.0"
 }
