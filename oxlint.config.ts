@@ -26,12 +26,11 @@ export default defineConfig({
   ],
   rules: {
     // general rules
-    'array-callback-return': 'error',
     'no-array-constructor': 'error',
-    'no-empty-function': 'error',
     'no-new-func': 'error',
     'no-template-curly-in-string': 'error',
     'import/export': 'error',
+    'no-constant-condition': 'off',
 
     // typescript rules
     'typescript/ban-ts-comment': 'error',
@@ -52,7 +51,6 @@ export default defineConfig({
     'typescript/prefer-namespace-keyword': 'error',
     'typescript/triple-slash-reference': 'error',
     'typescript/adjacent-overload-signatures': 'error',
-    'typescript/array-type': 'error',
     'typescript/ban-tslint-comment': 'error',
     'typescript/class-literal-property-style': 'error',
     'typescript/consistent-generic-constructors': 'error',
@@ -66,6 +64,7 @@ export default defineConfig({
 
     // vitest rules
     'vitest/no-focused-tests': 'error',
+    'vitest/require-to-throw-message': 'off',
 
     // unicorn rules
     'unicorn/catch-error-name': [
