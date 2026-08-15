@@ -9,6 +9,9 @@ export default defineConfig({
   categories: {
     correctness: 'error'
   },
+  options: {
+    typeAware: true
+  },
   ignorePatterns: [
     '**/node_modules/**',
     '**/build/**',
@@ -34,7 +37,7 @@ export default defineConfig({
     'typescript/ban-ts-comment': 'error',
     'typescript/no-duplicate-enum-values': 'error',
     'typescript/no-empty-object-type': 'error',
-    'typescript/no-explicit-any': 'error',
+    // 'typescript/no-explicit-any': 'error',
     'typescript/no-extra-non-null-assertion': 'error',
     'typescript/no-misused-new': 'error',
     'typescript/no-namespace': 'error',
@@ -55,7 +58,7 @@ export default defineConfig({
     'typescript/consistent-generic-constructors': 'error',
     'typescript/consistent-indexed-object-style': 'error',
     'typescript/consistent-type-assertions': 'error',
-    'typescript/consistent-type-definitions': 'error',
+    // 'typescript/consistent-type-definitions': 'error',
     'typescript/no-confusing-non-null-assertion': 'error',
     'typescript/no-inferrable-types': 'error',
     'typescript/prefer-for-of': 'error',

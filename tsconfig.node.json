@@ -2,11 +2,12 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Node.js TS Config",
   "compilerOptions": {
-    "lib": ["ESNext", "DOM.Iterable"],
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "module": "esnext",
     "moduleDetection": "force",
     "moduleResolution": "bundler",
     "target": "es2022",
+    "types": ["node"],
 
     "allowImportingTsExtensions": false,
     "allowJs": true,
