@@ -11,10 +11,10 @@ importers:
       '@total-typescript/ts-reset':
         specifier: ^0.6.1
         version: 0.6.1
-    devDependencies:
       '@types/node':
         specifier: ^26.2.0
         version: 26.2.0
+    devDependencies:
       lint-staged:
         specifier: ^17.3.0
         version: 17.3.0

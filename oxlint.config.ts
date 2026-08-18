@@ -54,7 +54,7 @@ export default defineConfig({
     'typescript/ban-tslint-comment': 'error',
     'typescript/class-literal-property-style': 'error',
     'typescript/consistent-generic-constructors': 'error',
-    'typescript/consistent-indexed-object-style': 'error',
+    'typescript/consistent-indexed-object-style': 'off',
     'typescript/consistent-type-assertions': 'error',
     // 'typescript/consistent-type-definitions': 'error',
     'typescript/no-confusing-non-null-assertion': 'error',
