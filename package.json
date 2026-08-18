@@ -34,7 +34,7 @@
     "fix:lint": "oxlint --fix",
     "posttest": "run-s build",
     "prerelease": "run-s test",
-    "release": "release-it --only-version --npm.publishPackageManager=pnpm --github.release --github.autoGenerate"
+    "release": "release-it --github.release --github.autoGenerate"
   },
   "dependencies": {
     "@total-typescript/ts-reset": "^0.6.1",
