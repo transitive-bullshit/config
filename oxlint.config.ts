@@ -15,6 +15,7 @@ export default defineConfig({
     typeAware: true
   },
   ignorePatterns: [
+    '**/pnpm-workspace.yaml',
     '.agent/**',
     '.agents/**',
     '.claude/**',
@@ -152,7 +153,10 @@ export default defineConfig({
       rules: {
         // relax rules for test files
         'typescript/no-explicit-any': 'off',
-        'typescript/ban-ts-comment': 'off'
+        'typescript/ban-ts-comment': 'off',
+        'anti-slop/no-module-mocking': 'off',
+        'anti-slop/no-runtime-typeof': 'off',
+        'anti-slop/require-safety-comment-for-type-assertion': 'off'
       }
     }
   ]
