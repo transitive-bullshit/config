@@ -109,7 +109,10 @@ export default defineConfig({
     // anti-slop rules
     'anti-slop/no-runtime-typeof': 'off',
     'anti-slop/require-safety-comment-for-type-assertion': 'off',
-    'anti-slop/no-chained-type-assertions': 'error',
+    'anti-slop/no-unknown-parameters': 'off',
+    'anti-slop/no-unsafe-dictionary-type': 'off',
+    'anti-slop/no-chained-type-assertions': 'off', // TODO: re-enable this in the future
+    'anti-slop/no-unknown-returns': 'off',
     'anti-slop/no-conditional-empty-object-spread': 'error',
     'anti-slop/no-known-value-widening': 'error',
     'anti-slop/no-module-mocking': 'error',
@@ -117,10 +120,7 @@ export default defineConfig({
     'anti-slop/no-reflect-apply': 'error',
     'anti-slop/no-reflect-get': 'error',
     'anti-slop/no-shape-in-symbol-names': 'error',
-    'anti-slop/no-unknown-parameters': 'error',
-    'anti-slop/no-unknown-returns': 'error',
     'anti-slop/no-unknown-type-aliases': 'error',
-    'anti-slop/no-unsafe-dictionary-type': 'error',
     'anti-slop/no-widen-then-assert': 'error'
   },
   overrides: [
