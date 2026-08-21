@@ -4,3 +4,6 @@ minimumReleaseAge: 1440
 
 allowBuilds:
   simple-git-hooks: true
+
+minimumReleaseAgeExclude:
+  - '@fisch0920/oxlint-plugin-anti-slop'

@@ -6,7 +6,7 @@ export default defineConfig({
   jsPlugins: [
     {
       name: 'anti-slop',
-      specifier: './tools/oxlint/anti-slop/index.ts'
+      specifier: '@fisch0920/oxlint-plugin-anti-slop'
     }
   ],
   env: {
