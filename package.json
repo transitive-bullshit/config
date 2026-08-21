@@ -40,11 +40,12 @@
     "@total-typescript/ts-reset": "^0.6.1"
   },
   "devDependencies": {
+    "@oxlint/plugins": "1.79.0",
     "@types/node": "^26.2.0",
     "lint-staged": "^17.3.0",
     "npm-run-all2": "^9.0.3",
     "oxfmt": "^0.63.0",
-    "oxlint": "^1.78.0",
+    "oxlint": "1.79.0",
     "oxlint-tsgolint": "^7.0.2001",
     "release-it": "^21.0.2",
     "simple-git-hooks": "^2.13.1",

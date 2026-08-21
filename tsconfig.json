@@ -1,5 +1,6 @@
 {
   "extends": "./tsconfig.node.json",
   "include": ["**/*.ts"],
+  "exclude": ["tools/oxlint/anti-slop/**"],
   "compilerOptions": { "types": ["./ts-reset.d.ts"] }
 }
