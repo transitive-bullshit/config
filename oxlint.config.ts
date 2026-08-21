@@ -3,12 +3,7 @@ import { defineConfig } from 'oxlint'
 export default defineConfig({
   $schema: './node_modules/oxlint/configuration_schema.json',
   plugins: ['typescript', 'unicorn', 'oxc', 'react', 'vitest'],
-  jsPlugins: [
-    {
-      name: 'anti-slop',
-      specifier: '@fisch0920/oxlint-plugin-anti-slop'
-    }
-  ],
+  jsPlugins: ['@fisch0920/oxlint-plugin-anti-slop'],
   env: {
     builtin: true
   },
@@ -31,7 +26,6 @@ export default defineConfig({
     '.pi/**',
     '.roo/**',
     '.windsurf/**',
-    'tools/oxlint/anti-slop/**',
     '**/node_modules/**',
     '**/build/**',
     '**/dist/**',
