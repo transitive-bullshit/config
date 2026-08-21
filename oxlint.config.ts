@@ -107,6 +107,8 @@ export default defineConfig({
     'unicorn/no-array-reduce': 'off',
 
     // anti-slop rules
+    'anti-slop/no-runtime-typeof': 'off',
+    'anti-slop/require-safety-comment-for-type-assertion': 'off',
     'anti-slop/no-chained-type-assertions': 'error',
     'anti-slop/no-conditional-empty-object-spread': 'error',
     'anti-slop/no-known-value-widening': 'error',
@@ -114,14 +116,12 @@ export default defineConfig({
     'anti-slop/no-object-parameters': 'error',
     'anti-slop/no-reflect-apply': 'error',
     'anti-slop/no-reflect-get': 'error',
-    'anti-slop/no-runtime-typeof': 'error',
     'anti-slop/no-shape-in-symbol-names': 'error',
     'anti-slop/no-unknown-parameters': 'error',
     'anti-slop/no-unknown-returns': 'error',
     'anti-slop/no-unknown-type-aliases': 'error',
     'anti-slop/no-unsafe-dictionary-type': 'error',
-    'anti-slop/no-widen-then-assert': 'error',
-    'anti-slop/require-safety-comment-for-type-assertion': 'error'
+    'anti-slop/no-widen-then-assert': 'error'
   },
   overrides: [
     {
@@ -154,9 +154,7 @@ export default defineConfig({
         // relax rules for test files
         'typescript/no-explicit-any': 'off',
         'typescript/ban-ts-comment': 'off',
-        'anti-slop/no-module-mocking': 'off',
-        'anti-slop/no-runtime-typeof': 'off',
-        'anti-slop/require-safety-comment-for-type-assertion': 'off'
+        'anti-slop/no-module-mocking': 'off'
       }
     }
   ]
