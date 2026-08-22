@@ -154,7 +154,15 @@ export default defineConfig({
         // relax rules for test files
         'typescript/no-explicit-any': 'off',
         'typescript/ban-ts-comment': 'off',
-        'anti-slop/no-module-mocking': 'off'
+        'anti-slop/no-module-mocking': 'off',
+        'anti-slop/no-conditional-empty-object-spread': 'off',
+        'anti-slop/no-known-value-widening': 'off',
+        'anti-slop/no-object-parameters': 'off',
+        'anti-slop/no-reflect-apply': 'off',
+        'anti-slop/no-reflect-get': 'off',
+        'anti-slop/no-shape-in-symbol-names': 'off',
+        'anti-slop/no-unknown-type-aliases': 'off',
+        'anti-slop/no-widen-then-assert': 'off'
       }
     }
   ]
