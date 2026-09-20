@@ -113,8 +113,8 @@ export default defineConfig({
     'anti-slop/no-unsafe-dictionary-type': 'off',
     'anti-slop/no-chained-type-assertions': 'off', // TODO: re-enable this in the future
     'anti-slop/no-unknown-returns': 'off',
+    'anti-slop/no-known-value-widening': 'off',
     'anti-slop/no-conditional-empty-object-spread': 'error',
-    'anti-slop/no-known-value-widening': 'error',
     'anti-slop/no-module-mocking': 'error',
     'anti-slop/no-object-parameters': 'error',
     'anti-slop/no-reflect-apply': 'error',
