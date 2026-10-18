@@ -1,15 +1,19 @@
 // End-to-end examples: runs `oxlint --fix` with every padding rule enabled, so
 // each case shows the final output users get from the shared config.
-import assert from 'node:assert/strict'
 import { execFileSync } from 'node:child_process'
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { test } from 'node:test'
+
+import { afterAll, expect, test } from 'vitest'
 
 const oxlintBin = join(import.meta.dirname, '../node_modules/oxlint/bin/oxlint')
 const tempDir = mkdtempSync(join(tmpdir(), 'oxlint-padding-'))
 const configPath = join(tempDir, '.oxlintrc.json')
+
+afterAll(() => {
+  rmSync(tempDir, { recursive: true, force: true })
+})
 
 writeFileSync(
   configPath,
@@ -240,19 +244,9 @@ export const name = 'app'
   }
 ]
 
-try {
-  for (const example of examples) {
-    await test(example.name, () => {
-      const { output, ruleIds } = lintAndFix(example.code)
+test.for(examples)('$name', (example) => {
+  const { output, ruleIds } = lintAndFix(example.code)
 
-      assert.equal(output, example.output)
-
-      assert.deepEqual(
-        ruleIds.toSorted(byName),
-        example.ruleIds.toSorted(byName)
-      )
-    })
-  }
-} finally {
-  rmSync(tempDir, { recursive: true, force: true })
-}
+  expect(output).toBe(example.output)
+  expect(ruleIds.toSorted(byName)).toEqual(example.ruleIds.toSorted(byName))
+})
