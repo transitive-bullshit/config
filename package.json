@@ -30,6 +30,7 @@
     "test:format": "oxfmt --check",
     "test:lint": "oxlint",
     "test:typecheck": "tsc",
+    "test:unit": "node --test 'oxlint-plugin/**/*.test.ts'",
     "fix:format": "oxfmt",
     "fix:lint": "oxlint --fix",
     "posttest": "run-s build",
@@ -38,6 +39,7 @@
   },
   "dependencies": {
     "@fisch0920/oxlint-plugin-anti-slop": "^0.2.1",
+    "@oxlint/plugins": "^1.88.0",
     "@total-typescript/ts-reset": "^0.6.1"
   },
   "devDependencies": {
