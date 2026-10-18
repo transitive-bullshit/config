@@ -1,9 +1,22 @@
+import { join } from 'node:path'
+
 import { defineConfig } from 'oxlint'
+
+// Local padding rules. The plugin sits next to this config both in source
+// (`oxlint-plugin/index.ts`) and once bundled (`build/oxlint-plugin/index.mjs`).
+const paddingPlugin = join(
+  import.meta.dirname,
+  'oxlint-plugin',
+  import.meta.filename.endsWith('.ts') ? 'index.ts' : 'index.mjs'
+)
 
 export default defineConfig({
   $schema: './node_modules/oxlint/configuration_schema.json',
   plugins: ['typescript', 'unicorn', 'oxc', 'react', 'vitest'],
-  jsPlugins: ['@fisch0920/oxlint-plugin-anti-slop'],
+  jsPlugins: [
+    '@fisch0920/oxlint-plugin-anti-slop',
+    { name: 'padding', specifier: paddingPlugin }
+  ],
   env: {
     builtin: true
   },
@@ -121,7 +134,13 @@ export default defineConfig({
     'anti-slop/no-reflect-get': 'error',
     'anti-slop/no-shape-in-symbol-names': 'error',
     'anti-slop/no-unknown-type-aliases': 'error',
-    'anti-slop/no-widen-then-assert': 'error'
+    'anti-slop/no-widen-then-assert': 'error',
+
+    // padding rules
+    'padding/around-multiline-statements': 'error',
+    'padding/around-type-definitions': 'error',
+    'padding/between-declaration-groups': 'error',
+    'padding/between-functions': 'error'
   },
   overrides: [
     {
